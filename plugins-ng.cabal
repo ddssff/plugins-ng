@@ -20,7 +20,7 @@ library
   other-extensions:    OverloadedStrings, TemplateHaskell
   build-depends:       base             >= 4.6 && < 4.7,
                        containers       >= 0.5 && < 0.6,
-                       fsnotify         >= 0.0 && < 0.1,
+                       fsnotify         >= 0.0 && < 0.2,
                        ghc              >= 7.6 && < 7.7,
                        ghc-paths        >= 0.1 && < 0.2,
                        stm              >= 2.4 && < 2.5,
