@@ -82,7 +82,7 @@ isModified (Modified {}) = True
 isModified _             = False
 
 -- | watch a single file for changes
-watchFile :: WatchManager -> (FilePath, FilePath) -> IO () -> IO ()
+watchFile :: WatchManager -> (FilePath, FilePath) -> IO () -> IO StopListening
 watchFile wm (dir, file) action =
     watchDir wm dir
                  (\e -> filename (eventPath e) == file)
@@ -98,7 +98,7 @@ watchFiles wm fps action =
        mapM_ watchFiles' pairs
     where
       splitFileName fp = (dirname fp, filename fp)
-      watchFiles' :: (FilePath, [FilePath]) -> IO ()
+      watchFiles' :: (FilePath, [FilePath]) -> IO StopListening
       watchFiles' (dir, files) =
           watchDir wm dir
                    (\e -> filename (eventPath e) `elem` files)
